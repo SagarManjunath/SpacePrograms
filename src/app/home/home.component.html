@@ -1,0 +1,66 @@
+<h3>SpaceX Launch Programs</h3>
+<div class="Container">
+<div class="filter"> 
+    <div class="card" style="width: max-content;">
+        <strong>Filters</strong>
+        <div>Launch Year</div>
+        <hr>
+        <div style="display: flex;">
+            <div>
+                <div *ngFor="let year of EvenLaunchYears">
+                    <button class="yearbtn" mat-raised-button color="primary" (click)="GetAllSpaceProgramsByYear(year)" >{{year}}</button> 
+                </div>
+            </div>
+            <div>
+                <div *ngFor="let year of OddLaunchYears">
+                    <button class="yearbtn" mat-raised-button color="primary" (click)="GetAllSpaceProgramsByYear(year)" >{{year}}</button> 
+                </div>
+            </div>
+        </div>
+   
+      
+        
+        <div>
+           <div>Successfull launch</div> 
+            <hr>
+            <button mat-raised-button color="primary" class="yearbtn" (click)="GetAllSuccessfullLaunch(true)">True</button>
+            <button mat-raised-button color="primary" class="yearbtn" (click)="GetAllSuccessfullLaunch(false)">False</button>
+        </div>
+    </div>
+   
+</div>
+<div class="content" *ngIf="spaceList.length>0">
+    <div class="space">
+        <div class="block" *ngFor="let space of spaceList">
+            <div class="card">
+            <figure>
+                <img [src]="space.links.mission_patch_small" [alt]="space.mission_name" />
+            </figure>
+            <div>
+                {{space.mission_name}} #{{space.flight_number}}
+            </div>
+            <div>
+                <strong>Mission Ids:</strong>
+                {{space.mission_id}}
+            </div>
+            <div>
+                <strong>Lauch Year:</strong>
+                {{space.launch_year}}
+            </div>
+            <div>
+                <strong>Successfull launch:</strong>
+                {{space.launch_success}}
+            </div>
+            <div>
+                <strong>Successfull landing:</strong>
+                {{space.launch_landing}}
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="spaceList.length==0">
+    <div class="block">No launchs in this year</div>
+</div>
+
+</div>

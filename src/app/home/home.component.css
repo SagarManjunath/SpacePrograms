@@ -1,0 +1,67 @@
+.space{    
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;    
+    margin-bottom: 25px;
+}
+.block{
+    display: inline-block;
+    cursor: pointer;
+    margin: 10px 10px;
+}
+figure img{
+    width: 200px;
+    margin: 8px auto;
+    transition: all 0.3s ease-in;
+    background: lightgray;
+ }
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.Container{
+    display: flex;
+}
+.filter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.yearbtn{
+    margin:10px;
+}
+
+/* for screen */
+@media (min-width: 1281px) {
+  
+    .Container{
+        display: flex;
+        flex-direction: row;
+    }
+    
+  }
+  @media (min-width: 1025px) and (max-width: 1280px) {
+  
+    .Container{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    
+  }
+/* for tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+    .Container{
+        display: flex;
+        flex-direction: row;
+    }
+    
+  }
+  @media (min-width: 320px) and (max-width: 600px) {
+  
+    .Container{
+        display: flex;
+        flex-direction: column;
+    }
+    
+  }
