@@ -7,6 +7,7 @@ import { HomeService } from '../home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  step:any;
   year:number;
   SuccessLaunch:boolean=false;
   Successland:boolean=false;
