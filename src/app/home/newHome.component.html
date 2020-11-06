@@ -1,0 +1,85 @@
+
+
+
+<div fxLayout="row" style="padding: 5px;">
+    <h3>SpaceX Launch Programs</h3>
+</div>
+<div fxLayout="row" fxLayout.xs="column">
+    <div fxLayout="column">
+        <div class="card">
+            <div>
+                <p class="cardHeader">Filters</p>
+                <p class="filterName">Launch Year</p>
+            </div>
+            <div fxLayout="row">                
+                <div fxLayout="column">                  
+                    <div *ngFor="let year of EvenLaunchYears">
+                        <button class="yearbtn" mat-raised-button color="primary" (click)="GetAllSpaceProgramsByYear(year)" >{{year}}</button> 
+                    </div>
+                </div>
+                <div fxLayout="column">
+                    <div *ngFor="let year of OddLaunchYears">
+                        <button class="yearbtn" mat-raised-button color="primary" (click)="GetAllSpaceProgramsByYear(year)" >{{year}}</button> 
+                    </div>
+                </div>
+            </div>
+            <div>                
+                <p class="filterName">Successfull launch</p>
+            </div>
+            <div fxLayout="row">
+                <div fxLayout="column">
+                    <button mat-raised-button color="primary" class="yearbtn1" [ngClass]="{'active': step==='step1'}"  (click)="GetAllSuccessfullLaunch(true);step='step1'">True</button>
+                </div>
+                <div fxLayout="column">
+                    <button mat-raised-button color="primary" class="yearbtn1" [ngClass]="{'active': step==='step2'}" (click)="GetAllSuccessfullLaunch(false);step='step2'">False</button>
+                </div>
+            </div>
+            <div>                
+                <p class="filterName">Successfull landing</p>
+            </div>
+            <div fxLayout="row">
+                <div fxLayout="column">
+                    <button mat-raised-button color="primary" class="yearbtn2" (click)="GetAllLaunchSuccessAndLandSuccess(true)">True</button>
+                </div>
+                <div fxLayout="column">
+                    <button mat-raised-button color="primary" class="yearbtn2" (click)="GetAllLaunchSuccessAndLandSuccess(false)">False</button>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <div  class="spaceCard">
+        <div *ngFor="let space of spaceList">
+            <div class="card cardWidth">
+        
+                <img class="image" [src]="space.links.mission_patch_small" [alt]="space.mission_name" />
+          
+            <div>
+                <div>
+                    {{space.mission_name}} #{{space.flight_number}}
+                </div>
+                <div>
+                    <strong>Mission Ids:</strong>
+                    {{space.mission_id}}
+                </div>
+                <div>
+                    <strong>Lauch Year:</strong>
+                    {{space.launch_year}}
+                </div>
+                <div>
+                    <strong>Successfull launch:</strong>
+                    {{space.launch_success}}
+                </div>
+                <div>
+                    <strong>Successfull landing:</strong>
+                    {{space.launch_landing}}
+                </div>
+            </div>
+         
+        </div>
+        </div>
+    </div>
+</div>
+<div fxLayout="row" style="justify-content: center;margin: 5px;">
+    <div >Developed by: <a href="https://sagar-m.web.app/myProfile.html">Sagar M</a></div>
+</div>

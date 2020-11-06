@@ -7,7 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule} from  "@angular/material";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {CustomMaterialModule} from './material-module/custom-material.module'
+import {CustomMaterialModule} from './material-module/custom-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {CustomMaterialModule} from './material-module/custom-material.module'
     HttpClientModule,
     MatCardModule,
     CustomMaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

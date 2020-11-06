@@ -3,10 +3,13 @@ import { HomeService } from '../home.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
+  templateUrl: './newHome.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  year:number;
+  SuccessLaunch:boolean=false;
+  Successland:boolean=false;
   spaceList:any;
   EvenLaunchYears:any=[
     2006,   
@@ -27,6 +30,38 @@ export class HomeComponent implements OnInit {
     2017,   
     2019
   ]
+  yearsEven:Array<any>=[{
+    id:1,
+    name:'2006',
+    active:false
+  },{
+    id:2,
+    name:'2008',
+    active:false
+  },{
+    id:3,
+    name:'2010',
+    active:false
+  },{
+    id:4,
+    name:'2012',
+    active:false
+  }
+  ,{
+    id:5,
+    name:'2014',
+    active:false
+  },{
+    id:6,
+    name:'2016',
+    active:false
+  },{
+    id:7,
+    name:'2018',
+    active:false
+  }
+]
+  
 
   constructor(public homeService:HomeService) { }
 
@@ -34,6 +69,7 @@ export class HomeComponent implements OnInit {
     this.GetAllSpacePrograms();
     
   }
+ 
 
   GetAllSpacePrograms(){
     this.homeService.GetAllSpacePrograms().subscribe((prgms)=>{
@@ -43,14 +79,28 @@ export class HomeComponent implements OnInit {
   }
 
   GetAllSpaceProgramsByYear(year:number){
-    this.homeService.GetAllSpaceProgramsByYear(year).subscribe((yearPrms)=>{
+    this.year=year;
+    this.homeService.GetAllSpaceProgramsByYear(this.year).subscribe((yearPrms)=>{
       this.spaceList=yearPrms;
     })
 
   }
 
   GetAllSuccessfullLaunch(isSuccessLaunch){
-    this.homeService.GetAllSuccessfullLaunch(isSuccessLaunch).subscribe((successLaunchs)=>{
+    this.SuccessLaunch=isSuccessLaunch;
+    this.homeService.GetAllSuccessfullLaunch(this.SuccessLaunch).subscribe((successLaunchs)=>{
+      this.spaceList=successLaunchs;
+    })
+  }
+
+  GetAllLaunchSuccessAndLandSuccess(isSuccessLand){
+    this.Successland=isSuccessLand;
+    this.homeService.GetAllLaunchSuccessAndLandSuccess(this.SuccessLaunch,this.Successland).subscribe((successLaunchs)=>{
+      this.spaceList=successLaunchs;
+    })
+  }
+  GetAll(){
+    this.homeService.GetAll(this.year,this.SuccessLaunch,this.Successland).subscribe((successLaunchs)=>{
       this.spaceList=successLaunchs;
     })
   }

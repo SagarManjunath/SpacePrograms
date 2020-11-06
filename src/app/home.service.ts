@@ -18,4 +18,11 @@ export class HomeService {
   GetAllSuccessfullLaunch(isSuccessLaunch:boolean){
     return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success='+isSuccessLaunch)
   }
+
+  GetAllLaunchSuccessAndLandSuccess(isSuccessLaunch:boolean,isSuccessLand:boolean){
+    return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success='+isSuccessLaunch+'&land_success='+isSuccessLand)
+  }
+  GetAll(year:number,isSuccessLaunch:boolean,isSuccessLand:boolean){
+    return this.http.get('https://api.spaceXdata.com/v3/launches?limit=100&launch_success='+isSuccessLaunch+'&land_success='+isSuccessLand+'&launch_year='+year)
+  }
 }
