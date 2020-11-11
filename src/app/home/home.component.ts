@@ -7,6 +7,8 @@ import { HomeService } from '../home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  selectedFilter=false;
+  objectKeys = Object.keys;
   step:any;
   year:number;
   SuccessLaunch:boolean=false;
@@ -98,12 +100,27 @@ export class HomeComponent implements OnInit {
     this.Successland=isSuccessLand;
     this.homeService.GetAllLaunchSuccessAndLandSuccess(this.SuccessLaunch,this.Successland).subscribe((successLaunchs)=>{
       this.spaceList=successLaunchs;
+      console.log('after Successfull land');
+      console.log(this.spaceList);
     })
   }
   GetAll(){
     this.homeService.GetAll(this.year,this.SuccessLaunch,this.Successland).subscribe((successLaunchs)=>{
       this.spaceList=successLaunchs;
     })
+  }
+
+  IsLandingSuccessfull(flight_number:number){
+    if(this.spaceList[flight_number].hasOwnProperty('rocket')){
+      if( this.spaceList[flight_number].rocket.first_stage.hasOwnProperty('cores'))
+    //  return true;
+      return this.spaceList[flight_number].rocket.first_stage.cores[0].land_success==true?true:false;
+      else
+      return false
+    }   
+    else
+    return false
+
   }
 
 }
